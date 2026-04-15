@@ -82,6 +82,8 @@ Sample requests
 
 ## 1. Create Booking
 
+POST http://localhost:8080/api/bookings
+
 Request:
 
 {
