@@ -1,5 +1,5 @@
 # booking-system-saga-orchestrator-java
-A booking system with services for reservations, payments, and confirmations, let's design using Kafka and a booking orchestrator. A Saga Orchestrator Pattern
+A booking system with services for reservations, payments, and confirmations, let's design using Kafka and a booking orchestrator. A Saga Orchestrator Pattern.
 
 # refer to the linkedIn post article her 
 https://www.linkedin.com/pulse/design-architecture-perspective-orchestrated-saga-pattern-balsuni-nzyhf/
@@ -225,3 +225,10 @@ STARTED → RESERVATION_CREATED → PAYMENT_COMPLETED → CONFIRMED
 ### Cancellation Path
 
 CONFIRMED → COMPENSATING → COMPENSATED
+
+# known issue
+ProcessPaymentCommand extends BaseEvent in booking-orchestrator service has known issue:
+@Data lombok + Jackson issue which takes only base class even with the inheritance and the fix is to either use traditional getter setter methods instead of lombok annotations or verify the proper setup of lombok.
+
+### how you can identify the issue: 
+By using the decompiler you can verify if there are getters and setters created in the child class (ProcessPaymentCommand) and if you don't find, you can remove @Data lombok annotation from the base class (BaseEvent) and use traditional getters and setters in all child classes (ProcessPaymentCommand and all other classes from the com.booking.orchestrator.event.command package)
