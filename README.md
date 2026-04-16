@@ -1,5 +1,5 @@
 # booking-system-saga-orchestrator-java
-A booking system with services for reservations, payments, and confirmations, let's design using Kafka and a booking orchestrator. A Saga Orchestrator Pattern.
+A booking system with services for reservations, payments, and confirmations, let's design using Kafka and a booking orchestrator. A Saga Orchestrator Pattern. Using h2 embedded db in all the services.
 
 # refer to the linkedIn post article her 
 https://www.linkedin.com/pulse/design-architecture-perspective-orchestrated-saga-pattern-balsuni-nzyhf/
