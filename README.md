@@ -226,9 +226,21 @@ STARTED → RESERVATION_CREATED → PAYMENT_COMPLETED → CONFIRMED
 
 CONFIRMED → COMPENSATING → COMPENSATED
 
-# known issue
+# Known issue identified
+
 ProcessPaymentCommand extends BaseEvent in booking-orchestrator service has known issue:
 @Data lombok + Jackson issue which takes only base class even with the inheritance and the fix is to either use traditional getter setter methods instead of lombok annotations or verify the proper setup of lombok.
 
-### how you can identify the issue: 
+### How you can identify the issue: 
+
 By using the decompiler you can verify if there are getters and setters created in the child class (ProcessPaymentCommand) and if you don't find, you can remove @Data lombok annotation from the base class (BaseEvent) and use traditional getters and setters in all child classes (ProcessPaymentCommand and all other classes from the com.booking.orchestrator.event.command package)
+
+# Sequence Diagram
+
+### Happy Flow
+
+<img width="3992" height="2778" alt="seq" src="https://github.com/user-attachments/assets/628a8f22-7b86-4336-af4a-fc20ffbc7a6e" />
+
+### Compensation Flow
+
+<img width="2894" height="1484" alt="seq-fail" src="https://github.com/user-attachments/assets/4221abed-8b9a-4d81-9ba3-df5dc3fa3658" />
